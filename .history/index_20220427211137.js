@@ -14,7 +14,7 @@ document.getElementById("form-user-create").addEventListener("submit", (event) =
         if (field.name == "gender" && field.checked) {
             user[field.name] = field.value
         } else {
-            user[field.name] = field.value
+            user[field.name] = field.name
         }
 
     })

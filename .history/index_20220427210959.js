@@ -12,9 +12,9 @@ document.getElementById("form-user-create").addEventListener("submit", (event) =
     fields.forEach((field, index) => {
 
         if (field.name == "gender" && field.checked) {
-            user[field.name] = field.value
+            user[field.name] = field.name
         } else {
-            user[field.name] = field.value
+            user[field.name] = field.name
         }
 
     })
