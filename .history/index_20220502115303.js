@@ -17,10 +17,10 @@ function addLine(dataUser) {
     <td>${dataUser.admin}</td>
     <td>${dataUser.birth}</td>
     <td>
-            <button type="button" class="btn b''tn-primary btn-xs btn-flat">Editar</button>
+     <button type="button" class="btn b''tn-primary btn-xs btn-flat">Editar</button>
              <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
         </td>
-  ;`
+  ;
     document.getElementById("table-users").appendChild(tr)
 }
 
