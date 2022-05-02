@@ -13,7 +13,7 @@ function addLine(dataUser) {
     tr.innerHTML = `
     <td> <img src="dist/img/user1-128x128.jpg" alt="User Image" class="img-circle img-sm"></img></td>
     <td>${dataUser.name}</td>
-    <td>${dataUser.email}</td>
+    <td>${dataUser.email} s</td>
     <td>${dataUser.admin}</td>
     <td>${dataUser.birth}</td>
     <td>
