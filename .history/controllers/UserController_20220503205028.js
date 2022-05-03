@@ -146,7 +146,7 @@ class UserController {
         [...this.tableEl.children].forEach(tr => {
             numberUsers++;
             let user = JSON.parse(tr.dataset.user.admin);
-            if (user._admin) numberAdmin++
+            if (user.admin) numberAdmin++
 
         })
 

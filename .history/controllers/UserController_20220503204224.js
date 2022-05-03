@@ -117,9 +117,6 @@ class UserController {
 
     addLine(dataUser) {
         let tr = document.createElement('tr')
-        //pegar o objeto string, trasnformar em um Json e depois objeto string
-        tr.dataset.user = JSON.stringify(dataUser);
-
         tr.innerHTML = `
        
         <td> <img src="${dataUser.photo}" alt="User Image" class="img-circle img-sm"></img></td>
@@ -144,14 +141,8 @@ class UserController {
         let numberAdmin = 0;
         //contando a quantidede de linhas alimentando os contadores e verificando se e admin
         [...this.tableEl.children].forEach(tr => {
-            numberUsers++;
-            let user = JSON.parse(tr.dataset.user.admin);
-            if (user._admin) numberAdmin++
-
+            if(tr.children.value ==='')
+            numberAdmin++;
         })
-
-        //devolvendo os dados para a tela
-        document.querySelectorAll("#number-users").innerHTML = numberUsers;
-        document.querySelectorAll("#number-users-admin").innerHTML = numberAdmin;
     }
 }

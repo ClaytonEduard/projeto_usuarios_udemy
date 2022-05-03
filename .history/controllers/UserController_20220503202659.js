@@ -20,8 +20,7 @@ class UserController {
             // capturando os dados da foto
             let values = this.getValues();
 
-            // valodacao de dados corrigindo um erro da foto em branco no form
-            if (!values) return false;
+
 
             this.getPhoto().then((content) => {
                 values.photo = content;
@@ -78,9 +77,8 @@ class UserController {
         // [...] trasforma o objeto e um array de objetos
 
         [...this.formEl.elements].forEach((field, index) => {
-            if (['name', 'emaail', 'password'].indexOf(field.name) > -1 && !field.value) {
-                field.parentElement.classList.add('has-error');
-                isvalid = false;
+            if(['name','emaail','password'].indexOf(field.name) > -1&& !field.value) {
+                field.parentElement.removeChild(field==)
             }
             // falidadndo os dados do formulario
 
@@ -94,11 +92,6 @@ class UserController {
             }
 
         })
-        /// parando a execusao do formulario
-        if (!isvalid) {
-            return false;
-        }
-
         // ja retorna o objeto com os valores
         return new User(
             user.name,
@@ -117,9 +110,6 @@ class UserController {
 
     addLine(dataUser) {
         let tr = document.createElement('tr')
-        //pegar o objeto string, trasnformar em um Json e depois objeto string
-        tr.dataset.user = JSON.stringify(dataUser);
-
         tr.innerHTML = `
        
         <td> <img src="${dataUser.photo}" alt="User Image" class="img-circle img-sm"></img></td>
@@ -134,24 +124,5 @@ class UserController {
        
       `;
         this.tableEl.appendChild(tr)
-
-        this.updateCount()
-    }
-    //----------------------------------------------------------------
-
-    updateCount() {
-        let numberUsers = 0;
-        let numberAdmin = 0;
-        //contando a quantidede de linhas alimentando os contadores e verificando se e admin
-        [...this.tableEl.children].forEach(tr => {
-            numberUsers++;
-            let user = JSON.parse(tr.dataset.user.admin);
-            if (user._admin) numberAdmin++
-
-        })
-
-        //devolvendo os dados para a tela
-        document.querySelectorAll("#number-users").innerHTML = numberUsers;
-        document.querySelectorAll("#number-users-admin").innerHTML = numberAdmin;
     }
 }

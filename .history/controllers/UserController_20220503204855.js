@@ -144,14 +144,10 @@ class UserController {
         let numberAdmin = 0;
         //contando a quantidede de linhas alimentando os contadores e verificando se e admin
         [...this.tableEl.children].forEach(tr => {
-            numberUsers++;
+            numberUsers++; 
             let user = JSON.parse(tr.dataset.user.admin);
-            if (user._admin) numberAdmin++
-
+            if (user.admin) numberAdmin++
+            
         })
-
-        //devolvendo os dados para a tela
-        document.querySelectorAll("#number-users").innerHTML = numberUsers;
-        document.querySelectorAll("#number-users-admin").innerHTML = numberAdmin;
     }
 }

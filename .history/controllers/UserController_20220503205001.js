@@ -146,12 +146,11 @@ class UserController {
         [...this.tableEl.children].forEach(tr => {
             numberUsers++;
             let user = JSON.parse(tr.dataset.user.admin);
-            if (user._admin) numberAdmin++
+            if (user.admin) numberAdmin++
 
         })
 
         //devolvendo os dados para a tela
-        document.querySelectorAll("#number-users").innerHTML = numberUsers;
-        document.querySelectorAll("#number-users-admin").innerHTML = numberAdmin;
+        document.querySelectorAll("#number-users").innerHTML
     }
 }

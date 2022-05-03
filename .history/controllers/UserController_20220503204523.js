@@ -117,8 +117,8 @@ class UserController {
 
     addLine(dataUser) {
         let tr = document.createElement('tr')
-        //pegar o objeto string, trasnformar em um Json e depois objeto string
-        tr.dataset.user = JSON.stringify(dataUser);
+        //pegar o objeto 
+        tr.dataset.user = dataUser;
 
         tr.innerHTML = `
        
@@ -144,14 +144,8 @@ class UserController {
         let numberAdmin = 0;
         //contando a quantidede de linhas alimentando os contadores e verificando se e admin
         [...this.tableEl.children].forEach(tr => {
-            numberUsers++;
-            let user = JSON.parse(tr.dataset.user.admin);
-            if (user._admin) numberAdmin++
-
+          
+            numberAdmin++;
         })
-
-        //devolvendo os dados para a tela
-        document.querySelectorAll("#number-users").innerHTML = numberUsers;
-        document.querySelectorAll("#number-users-admin").innerHTML = numberAdmin;
     }
 }
