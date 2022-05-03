@@ -7,35 +7,26 @@ class UserController {
 
         this.onSubmit();
     }
-    //----------------------------------------------------------------
+
     onSubmit() {
 
 
         this.formEl.addEventListener("submit", event => {
             event.preventDefault();
-            let btn = this.formEl.querySelector('[type="submit"]')
-            // ativando o botao
-            btn.disabled = true
 
             // capturando os dados da foto
             let values = this.getValues();
 
-
-
             this.getPhoto().then((content) => {
                 values.photo = content;
                 this.addLine(values)
-                //limpando o form 
-                this.formEl.reset()
-                //desativando o botao
-                btn.disabled = false
             }, (e) => {
                 console.error(e)
             })
         })
     }
 
-    //----------------------------------------------------------------
+    ////////////////////////////////
     //metodo ler foto
     getPhoto() {
 
@@ -66,7 +57,7 @@ class UserController {
 
     }
 
-    //----------------------------------------------------------------
+ //----------------------------------------------------------------
 
 
     //metodo para pegar todo os valores
@@ -105,20 +96,19 @@ class UserController {
     /// ----------------------------------------------------------------
 
     addLine(dataUser) {
-        let tr = document.createElement('tr')
-        tr.innerHTML = `
-       
+        this.tableEl.innerHTML = `
+        <tr>
         <td> <img src="${dataUser.photo}" alt="User Image" class="img-circle img-sm"></img></td>
         <td>${dataUser.name}</td>
         <td>${dataUser.email}</td>
-        <td>${(dataUser.admin) ? 'Sim' : 'Não'}</td>
-        <td>${dataUser.register}</td>
+        <td>${dataUser.admin}</td>
+        <td>${dataUser.birth}</td>
         <td>
                 <button type="button" class="btn b''tn-primary btn-xs btn-flat">Editar</button>
                  <button type="button" class="btn btn-danger btn-xs btn-flat">Excluir</button>
             </td>
-       
+         </tr>
       `;
-        this.tableEl.appendChild(tr)
     }
+
 }

@@ -28,6 +28,6 @@ class User {
     set photo(value) {
         this._photo = value;
     }
-    
+   
 
 }

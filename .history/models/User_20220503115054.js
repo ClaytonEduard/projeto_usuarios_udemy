@@ -24,10 +24,10 @@ class User {
     get photo() { return this._photo; }
     get admin() { return this._admin; }
 
-
-    set photo(value) {
-        this._photo = value;
-    }
     
+    set photo(value) {
+        return this._photo = value;;
+    }
+   
 
 }

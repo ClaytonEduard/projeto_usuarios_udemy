@@ -24,9 +24,8 @@ class User {
     get photo() { return this._photo; }
     get admin() { return this._admin; }
 
-
-    set photo(value) {
-        this._photo = value;
+    set password(value) {
+        return this._password = value;
     }
     
 
