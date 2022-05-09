@@ -181,7 +181,7 @@ class UserController {
     addLine(dataUser) {
 
 
-        let tr = this.getTR(dataUser);
+        let tr = this.getTR(dataUser)
 
         this.tableEl.appendChild(tr);
 
@@ -195,7 +195,8 @@ class UserController {
 
         tr.dataset.user = JSON.stringify(dataUser); 
 
-        tr.innerHTML =`
+        tr.innerHTML =
+            `
         <td><img src="${dataUser.photo}" alt="User Image" class="img-circle img-sm"></td>
         <td>${dataUser.name}</td>
         <td>${dataUser.email}</td>
@@ -230,13 +231,10 @@ class UserController {
 
 
         tr.querySelector(".btn-edit").addEventListener("click", e => {
-
             let json = JSON.parse(tr.dataset.user);
 
             this.formUpdateEl.dataset.trIndex = tr.sectionRowIndex;
-
             for (let name in json) {
-
                 let field = this.formUpdateEl.querySelector("[name=" + name.replace("_", "") + "]");
 
                 if (field) {

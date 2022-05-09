@@ -51,33 +51,40 @@ class User {
         this._photo = value;
     }
 
+    loadFromJSON(json){
 
-    loadFronJSON(json) {
+        for (let name in json){
+            
+            switch(name){
 
-        for (let name in json) {
-
-            switch (name) {
                 case '_register':
                     this[name] = new Date(json[name]);
-                    break;
+                break;
                 default:
                     this[name] = json[name];
+
             }
+            
 
         }
+
     }
 
     static getUsersStorage() {
+
         let users = [];
+
         if (localStorage.getItem("users")) {
-            users = JSON.parse(localStorage.getItem("users"))
+
+            users = JSON.parse(localStorage.getItem("users"));
+
         }
+
         return users;
+
     }
 
-
-
-    getNewID() {
+    getNewID(){
 
         let usersID = parseInt(localStorage.getItem("usersID"));
 
@@ -91,13 +98,13 @@ class User {
 
     }
 
-    save() {
+    save(){
 
         let users = User.getUsersStorage();
 
         if (this.id > 0) {
-
-            users.map(u => {
+            
+            users.map(u=>{
 
                 if (u._id == this.id) {
 
@@ -121,11 +128,11 @@ class User {
 
     }
 
-    remove() {
+    remove(){
 
         let users = User.getUsersStorage();
 
-        users.forEach((userData, index) => {
+        users.forEach((userData, index)=>{
 
             if (this._id == userData._id) {
 
@@ -138,5 +145,4 @@ class User {
         localStorage.setItem("users", JSON.stringify(users));
 
     }
-
 }

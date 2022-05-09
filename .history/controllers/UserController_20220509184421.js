@@ -181,7 +181,7 @@ class UserController {
     addLine(dataUser) {
 
 
-        let tr = this.getTR(dataUser);
+        let tr = this.getTR(dataUser)
 
         this.tableEl.appendChild(tr);
 
@@ -234,9 +234,8 @@ class UserController {
             let json = JSON.parse(tr.dataset.user);
 
             this.formUpdateEl.dataset.trIndex = tr.sectionRowIndex;
-
+            
             for (let name in json) {
-
                 let field = this.formUpdateEl.querySelector("[name=" + name.replace("_", "") + "]");
 
                 if (field) {

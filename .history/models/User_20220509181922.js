@@ -1,7 +1,7 @@
 class User {
     //construtor
     constructor(name, gender, birth, country, email, password, photo, admin) {
-        this._id;
+        this._id = id;
         this._name = name;
         this._gender = gender;
         this._birth = birth;
@@ -61,18 +61,17 @@ class User {
                     this[name] = new Date(json[name]);
                     break;
                 default:
-                    this[name] = json[name];
+                    this[name], json[name];
             }
 
         }
     }
 
-    static getUsersStorage() {
-        let users = [];
-        if (localStorage.getItem("users")) {
-            users = JSON.parse(localStorage.getItem("users"))
+    static getUsersStorage(){
+        let users =[];
+        if(localStorage.getItem("users")){
+            users = JSON.parse(localStorage.getItem("users"))x
         }
-        return users;
     }
 
 

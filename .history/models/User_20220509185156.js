@@ -61,7 +61,7 @@ class User {
                     this[name] = new Date(json[name]);
                     break;
                 default:
-                    this[name] = json[name];
+                    this[name], json[name];
             }
 
         }
