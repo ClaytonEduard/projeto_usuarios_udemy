@@ -14,9 +14,7 @@ class User {
 
     }
 
-    get id() {
-        return this._id;
-    }
+    get id() { return this._id };
 
     get register() {
         return this._register;
@@ -67,66 +65,36 @@ class User {
         }
     }
 
-    getNewID() {
 
-        let usersID = parseInt(localStorage.getItem("usersID"));
 
-        if (!usersID > 0) usersID = 0;
 
-        usersID++;
+    static getUsersStorage() {
+        let users = [];
 
-        localStorage.setItem("usersID", usersID);
+        if (localStorage.getItem("users")) {
+            users = JSON.parse(localStorage.getItem("users"))
+        };
+        return users;
+    }
 
-        return usersID;
-
+    getNewID(){
+        if(!wi)
     }
 
     save() {
-
         let users = User.getUsersStorage();
 
         if (this.id > 0) {
-
-            users.map(u => {
-
-                if (u._id == this.id) {
-
-                    Object.assign(u, this);
-
-                }
-
-                return u;
-
-            });
-
-        } else {
-
-            this._id = this.getNewID();
-
-            users.push(this);
-
+            let user = users.filter(u => {
+                return u.id === this.id;
+            })
         }
 
-        localStorage.setItem("users", JSON.stringify(users));
+        users.push(data);
 
-    }
-
-    remove() {
-
-        let users = User.getUsersStorage();
-
-        users.forEach((userData, index) => {
-
-            if (this._id == userData._id) {
-
-                users.splice(index, 1);
-
-            }
-
-        });
+        // sessionStorage.setItem("users", JSON.stringify(users));
 
         localStorage.setItem("users", JSON.stringify(users));
-
     }
 
 }

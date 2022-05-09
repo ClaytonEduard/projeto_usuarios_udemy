@@ -67,7 +67,7 @@ class User {
         }
     }
 
-    getNewID() {
+    getNewID(){
 
         let usersID = parseInt(localStorage.getItem("usersID"));
 
@@ -81,13 +81,13 @@ class User {
 
     }
 
-    save() {
+    save(){
 
         let users = User.getUsersStorage();
 
         if (this.id > 0) {
-
-            users.map(u => {
+            
+            users.map(u=>{
 
                 if (u._id == this.id) {
 
@@ -111,11 +111,11 @@ class User {
 
     }
 
-    remove() {
+    remove(){
 
         let users = User.getUsersStorage();
 
-        users.forEach((userData, index) => {
+        users.forEach((userData, index)=>{
 
             if (this._id == userData._id) {
 

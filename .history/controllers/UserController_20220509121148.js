@@ -41,19 +41,28 @@ class UserController {
                         result._photo = content;
                     };
 
-                    let user = new User();
+                    tr = this.ge')
 
-                    user.loadFronJSON(result);
+                    tr.innerHTML = `
+                        <td><img src="${result._photo}" alt="User Image" class="img-circle img-sm"</td>
+                        <td>${result._name}</td>
+                         <td>${result._email}</td>
+                        <td>${(result._admin) ? 'Sim' : 'Não'}</td>
+                         <td>${Utils.dateFormat(result._register)}</td>
+                         <td>
+                        <button type="button" class="btn btn-primary btn-edit btn-xs btn-flat">Editar</button>
+                        <button type="button" class="btn btn-danger  btn-xs btn-flat">Excluir</button>
+                         </td>
+   
+                         `;
 
-                    user.save();
-
-                    this.getTR(user, tr);
+                    this.addEventsTR(tr);
 
                     this.updateCount();
 
+                    btn.disabled = false;
                     this.formUpdateEl.reset();
 
-                    btn.disabled = false;
 
 
                     this.showPanelCreate();
@@ -76,6 +85,7 @@ class UserController {
             let btn = this.formEl.querySelector("[type=submit]");
             btn.disabled = true;
 
+
             let values = this.getValues(this.formEl);
 
             if (!values) return false;
@@ -84,7 +94,7 @@ class UserController {
                 (content) => {
 
                     values.photo = content;
-                    values.save();
+                    this.insert(values);
                     this.addLine(values);
                     //limpando o form 
                     this.formEl.reset();
@@ -169,9 +179,20 @@ class UserController {
 
     };
 
+    /// ----------------------------------------------------------------
+
+    getUsersStorage() {
+        let users = [];
+
+        if (localStorage.getItem("users")) {
+            users = JSON.parse(localStorage.getItem("users"))
+        };
+        return users;
+    }
+
 
     selectAll() {
-        let users = User.getUsersStorage();
+        let users = this.getUsersStorage();
         users.forEach(dataUser => {
             let user = new User();
             user.loadFronJSON(dataUser)
@@ -179,12 +200,24 @@ class UserController {
         });
     }
 
+
+    insert(data) {
+        let users = this.getUsersStorage();
+
+        users.push(data);
+
+        // sessionStorage.setItem("users", JSON.stringify(users));
+
+        localStorage.setItem("users", JSON.stringify(users));
+
+    }
+
     addLine(dataUser) {
 
 
         let tr = this.getTR(dataUser)
 
-
+    
 
         this.tableEl.appendChild(tr);
 

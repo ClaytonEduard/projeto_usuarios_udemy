@@ -76,6 +76,7 @@ class UserController {
             let btn = this.formEl.querySelector("[type=submit]");
             btn.disabled = true;
 
+
             let values = this.getValues(this.formEl);
 
             if (!values) return false;
@@ -169,6 +170,7 @@ class UserController {
 
     };
 
+    /// ----------------------------------------------------------------
 
     selectAll() {
         let users = User.getUsersStorage();
